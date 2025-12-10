@@ -1,0 +1,248 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* --- ESTILOS GENERALES --- */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #E40521; /* Rojo Honda */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* --- HEADER Y LOGO --- */
+header {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.honda-logo-img {
+    height: 60px; /* Ajustable */
+    width: auto;
+    display: block;
+}
+
+/* --- CONTENEDOR DE TARJETAS --- */
+/* --- CONTENEDOR DE TARJETAS --- */
+.container {
+    display: flex;
+    gap: 60px;
+    
+    /* Centrado Horizontal (Izquierda/Derecha) */
+    justify-content: center;
+    
+    /* Centrado Vertical (Arriba/Abajo) - ESTO ES LO NUEVO */
+    align-items: center;     
+    
+    /* Hace que este contenedor ocupe todo el espacio sobrante entre Header y Footer */
+    flex-grow: 1;            /* NUEVO */
+    
+    flex-wrap: wrap;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* --- TARJETAS (BOTONES) --- */
+/* --- TARJETAS (BOTONES) --- */
+.card {
+    background-color: black;
+    width: 300px;
+    height: 100px;
+    border-radius: 20px;
+    
+    /* --- ESTO ES LO NUEVO PARA CENTRAR --- */
+    display: flex;             /* Activa el modo flexible */
+    justify-content: center;   /* Centra horizontalmente (izquierda/derecha) */
+    align-items: center;       /* Centra verticalmente (arriba/abajo) */
+    /* ----------------------------------- */
+    
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+/* --- ETIQUETAS DE TEXTO (STAND / MATERIAL POP) --- */
+/* --- TEXTO DENTRO DE LA TARJETA --- */
+.card-label {
+    /* Quitamos position, bottom y left porque ya no hacen falta */
+    
+    text-align: center;
+    width: 100%;       /* Para asegurar que el texto se centre en su propia caja */
+    padding: 0 10px;   /* Un poco de margen por si el texto es muy largo */
+    
+    color: #E40521;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    pointer-events: none;
+}
+
+/* --- VENTANA POPUP (MODAL) --- */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: white;
+    width: 90%;
+    max-width: 800px;
+    height: 80%;
+    max-height: 700px;
+    border-radius: 15px;
+    position: relative;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+
+/* Botón de cerrar (X) */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2.5rem;
+    line-height: 1;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.2s;
+    z-index: 10;
+}
+
+.close-btn:hover {
+    color: #E40521;
+}
+
+#modal-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Contenedor para el viewer 3D */
+#modal-body {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Estilos internos del componente model-viewer */
+model-viewer {
+    width: 100%;
+    height: 100%;
+    poster-color: transparent;
+}
+
+/* --- FOOTER --- */
+.main-footer {
+    width: 100%;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: auto; /* Empuja el footer hacia el final de la pantalla */
+    box-sizing: border-box; /* Asegura que el padding no rompa el ancho */
+}
+
+.designer-text {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px; /* Un tamaño elegante y discreto */
+    color: black;     /* Color negro para resaltar sobre el rojo */
+    margin-bottom: 20px; /* Espacio entre el texto y el logo */
+    font-weight: 500;    /* Un grosor medio para buena lectura */
+    letter-spacing: 0.5px; /* Un poco de aire entre letras */
+}
+
+.footer-logo {
+    height: 20px; /* Un poco más pequeño que el del header para jerarquía */
+    width: auto;
+    display: inline-block;
+}
+
+/* =========================================
+   DISEÑO RESPONSIVE (PARA CELULARES)
+   ========================================= */
+
+/* Esta regla se activa solo si la pantalla mide menos de 768px (Tablets y Celulares) */
+@media screen and (max-width: 768px) {
+
+    /* 1. Ajustamos el Logo */
+    .honda-logo-img {
+        height: 45px; /* Más pequeño para que no ocupe tanto */
+    }
+
+    /* 2. Ajustamos el Contenedor */
+    .container {
+        gap: 30px;     /* Reducimos el espacio entre tarjetas */
+        padding: 15px; /* Menos margen a los costados */
+        align-items: center; /* Asegura que se centren verticalmente al apilarse */
+    }
+
+    /* 3. Ajustamos las Tarjetas (Lo más importante) */
+    .card {
+        width: 100%;       /* Ahora ocupan el ancho disponible del celular */
+        max-width: 320px;  /* Pero ponemos un límite para que no se vean gigantes */
+        height: 100px;     /* Las hacemos un poco más bajitas para que quepan mejor */
+    }
+
+    /* 4. Ajustamos el tamaño de la letra de los botones */
+    .card-label {
+        font-size: 1.2rem; /* Un poco más pequeña */
+    }
+
+    /* 5. Ajustamos la ventana emergente (Popup) */
+    .modal-content {
+        width: 95%;        /* Que ocupe casi toda la pantalla */
+        height: 70%;       /* Ajustamos la altura */
+        padding: 20px;     /* Menos relleno interno */
+    }
+
+    /* 6. Botón de cerrar más grande para el dedo */
+    .close-btn {
+        font-size: 3rem;   /* Más fácil de tocar */
+        top: 10px;
+        right: 15px;
+    }
+    
+    /* 7. Ajustes del footer */
+    .main-footer {
+        padding: 20px 10px;
+    }
+    
+    .designer-text {
+        font-size: 12px;
+    }
+}

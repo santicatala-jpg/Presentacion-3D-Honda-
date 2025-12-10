@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honda 3D Experience</title>
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <img src="honda logo black.png" alt="Honda Logo" class="honda-logo-img">
+    </header>
+
+    <div class="container">
+        <div class="card" onclick="openModal('STAND')">
+            <div class="card-label">STAND</div>
+        </div>
+
+        <div class="card" onclick="openModal('MATERIAL POP')">
+            <div class="card-label">MATERIAL POP</div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            
+            <h2 id="modal-title">Visualización</h2>
+            
+            <div id="modal-body">
+                </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+	
+	<footer class="main-footer">
+        <p class="designer-text">Trabajo realizado por el diseñador Santiago Catala</p>
+        <img src="honda logo black.png" alt="Honda Logo" class="footer-logo">
+    </footer>
+
+</body>
+</html>
